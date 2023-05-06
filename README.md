@@ -1,7 +1,7 @@
 # stm32_practice
 #### 1. Tool : IAR  
 #### 2. Terminal : HyperTerminal  
-#### 3. Board : ![stm32f103v3](https://user-images.githubusercontent.com/94602114/236626980-a457e66c-db2e-4c41-86d6-596ce43e038a.jpg)
+#### 3. Board ![stm32f103v3](https://user-images.githubusercontent.com/94602114/236626980-a457e66c-db2e-4c41-86d6-596ce43e038a.jpg)
 
   
 ## 2023-05-05 
