@@ -20,9 +20,15 @@ void led_init(){
 }
 void LED_Test(){
   led_all_on();
-  delay_int_count(725690);
+  delay_int_count(806596);
   led_all_off();
-  delay_int_count(725690);
+  delay_int_count(806596);
+  for(int i=0;i<30;i++){
+    led_all_on();
+    delay_int_count(806596);
+    led_all_off();
+    delay_int_count(806596);
+  }
 }
 void led0_on(){
   GPIO_LED->BSRR |= LED_0;

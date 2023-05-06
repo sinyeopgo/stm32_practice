@@ -19,45 +19,52 @@
 #include "led.h"
 #include "key.h"
 #include "Usart.h"
+#include "system_config.h"
 
 int main(void)
 {
-  uint16_t ch;
+  //uint16_t ch;
   led_init();
   key_init();
   USART1_init();
-  printf("\033[H\033[J");
+  System_Clock_Configuration();
   
-  Serial_PutString("\r\nHello World! Hello Cortex-M3!!!\r\n");
-  printf("Hello Cortex-M3! with printf\n");
+  printf("\033[H\033[J");
+  System_Information();
+  
+  
+  //Serial_PutString("\r\nHello World! Hello Cortex-M3!!!\r\n");
+  //printf("Hello Cortex-M3! with printf\n");
+  
+  //LED_Test();
 
-  while (1)
-  {
-    printf("\n----------------\n");
-    printf("Press menu key\n");
-    printf("----------------\n");
-    printf("0> System Information\n");
-    printf("----------------\n");
-    printf("1> LED Test\n");
-    printf("2> KEY Test\n");
-    printf("----------------\n");
-    printf("x> quit\n\n");
-    
-    ch = USART_GetCharater(USART1);
-    printf(" is selected\n\n");
-    
-    if((char)ch == 'x') break;
-    
-    switch((char)ch){
-    case '0':
-      System_Information();
-      break;
-    case '1':
-      LED_Test();
-      break;
-    case '2':
-      Key_Test();
-      break;
-    }
-  }
+//  while (1)
+//  {
+//    printf("\n----------------\n");
+//    printf("Press menu key\n");
+//    printf("----------------\n");
+//    printf("0> System Information\n");
+//    printf("----------------\n");
+//    printf("1> LED Test\n");
+//    printf("2> KEY Test\n");
+//    printf("----------------\n");
+//    printf("x> quit\n\n");
+//    
+//    ch = USART_GetCharater(USART1);
+//    printf(" is selected\n\n");
+//    
+//    if((char)ch == 'x') break;
+//    
+//    switch((char)ch){
+//    case '0':
+//      System_Information();
+//      break;
+//    case '1':
+//      LED_Test();
+//      break;
+//    case '2':
+//      Key_Test();
+//      break;
+//    }
+//  }
 }

@@ -48,7 +48,7 @@ void USART1_init(){
 }
 
 void USART_Init(USART_TypeDef* USARTx, USART_InitTypeDef* USART_InitStruct){
-  uint32_t tmpreg = 0x00, apbclock = HSI_Value;
+  uint32_t tmpreg = 0x00, apbclock = 72000000;
   uint32_t integerdivider = 0x00;
   uint32_t fractionaldivider = 0x00;
   
@@ -152,6 +152,6 @@ uint8_t USART_GetCharater(USART_TypeDef* usart_p){
   if(data == '\r') return (int)('\n');
   else             return data;
 }
-void System_Information(){
-  printf("USART1->BRR : 0x%08X\n",USART1->BRR);
-}
+//void System_Information(){
+//  printf("USART1->BRR : 0x%08X\n",USART1->BRR);
+//}

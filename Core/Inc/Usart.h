@@ -40,7 +40,7 @@
 #define CR1_UE_Set              ((uint16_t)0x2000)
 
 //Clock
-#define HSI_Value               ((uint32_t)8000000)
+//#define HSI_Value               ((uint32_t)8000000)
 
 //USART CR2 STOP Bits Mask
 #define CR2_STOP_CLEAR_Mask     ((uint16_t)0xCFFF)  

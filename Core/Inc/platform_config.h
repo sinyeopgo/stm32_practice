@@ -120,6 +120,9 @@ typedef struct{
 #define USART1_BASE     (APB2PERIPH_BASE + 0x3800)
 #define USART1          ((USART_TypeDef*)USART1_BASE)
 
+#define FLASH_R_BASE    (AHBPERIPH_BASE + 0x2000) //Flash registers base address
+#define FLASH           ((FLASH_TypeDef *) FLASH_R_BASE)
+
 //**********CNF**********
 typedef enum{   //Speed, input/Output
   GPIO_Input_Mode = 0,
@@ -167,6 +170,27 @@ typedef struct{
   uint16_t USART_HardwareFlowControl;
 }USART_InitTypeDef;
  
+typedef struct
+{
+  _IO uint32_t ACR;
+  _IO uint32_t KEYR;
+  _IO uint32_t OPTKEYR;
+  _IO uint32_t SR;
+  _IO uint32_t CR;
+  _IO uint32_t AR;
+  _IO uint32_t RESERVED;
+  _IO uint32_t OBR;
+  _IO uint32_t WRPR;
+#ifdef STM32F10X_XL
+  uint32_t RESERVED1[8]; 
+  _IO uint32_t KEYR2;
+  uint32_t RESERVED2;   
+  _IO uint32_t SR2;
+  _IO uint32_t CR2;
+  _IO uint32_t AR2; 
+#endif /* STM32F10X_XL */  
+} FLASH_TypeDef;
+
 typedef enum{
   Bit_RESET = 0,
   Bit_SET
