@@ -11,6 +11,9 @@
 #define USART_Tx_Pin GPIO_PIN_9
 #define USART_Rx_Pin GPIO_PIN_10
 
+#define USART1_BASE     (APB2PERIPH_BASE + 0x3800)
+#define USART1          ((USART_TypeDef*)USART1_BASE)
+
 //Word Length
 #define USART_WordLength_8b  ((uint16_t)0x0000)
 #define USART_WordLength_9b  ((uint16_t)0x1000)
@@ -56,6 +59,33 @@
 
 //USART Status register TXE
 #define USART_FLAG_RXNE         ((uint16_t)0x0020)
+
+//**********USART_Typedef**********
+typedef struct{
+  _IO uint16_t SR;
+  uint16_t RESERVED0;
+  _IO uint16_t DR;
+  uint16_t RESERVED1;
+  _IO uint16_t BRR;
+  uint16_t RESERVED2;
+  _IO uint16_t CR1;
+  uint16_t RESERVED3;
+  _IO uint16_t CR2;
+  uint16_t RESERVED4;
+  _IO uint16_t CR3;
+  uint16_t RESERVED5;
+  _IO uint16_t GPTR;
+  uint16_t RESERVED6;
+}USART_TypeDef;
+
+typedef struct{
+  uint32_t USART_BaudRate;
+  uint16_t USART_WordLength;
+  uint16_t USART_StopBits;
+  uint16_t USART_Parity;
+  uint16_t USART_Mode;
+  uint16_t USART_HardwareFlowControl;
+}USART_InitTypeDef;
 
 void USART1_init();
 void USART_Init(USART_TypeDef* USARTx, USART_InitTypeDef* USART_InitStruct);

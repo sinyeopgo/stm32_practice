@@ -41,6 +41,14 @@
 #define RCC_APB2Periph_USART1     ((uint32_t)0x00004000)
 #define RCC_APB2Periph_ADC3     ((uint32_t)0x00008000)
 
+/* HCLK_Frequency */
+#define CFGR_HPRE_Set_Mask      ((uint32_t)0x000000F0)
+#ifdef __cplusplus
+#define  __I     volatile
+#else
+#define  __I     volatile const
+#endif  //CFGR_HPRE_Set_Mask
+
 //**********RCC_TypeDef**********
 #define _IO     volatile
  
@@ -71,24 +79,6 @@ typedef struct{
   _IO uint32_t BRR;
   _IO uint32_t LCKR;
 }GPIO_TypeDef;
-
-//**********USART_Typedef**********
-typedef struct{
-  _IO uint16_t SR;
-  uint16_t RESERVED0;
-  _IO uint16_t DR;
-  uint16_t RESERVED1;
-  _IO uint16_t BRR;
-  uint16_t RESERVED2;
-  _IO uint16_t CR1;
-  uint16_t RESERVED3;
-  _IO uint16_t CR2;
-  uint16_t RESERVED4;
-  _IO uint16_t CR3;
-  uint16_t RESERVED5;
-  _IO uint16_t GPTR;
-  uint16_t RESERVED6;
-}USART_TypeDef;
  
 //**********Peripheral Memory**********
 #define PERIPH_BASE     ((uint32_t)0x40000000)  //SRAM base address in the bit-band region
@@ -116,12 +106,6 @@ typedef struct{
 #define GPIOE           ((GPIO_TypeDef*)GPIOE_BASE)
 #define GPIOF           ((GPIO_TypeDef*)GPIOF_BASE)
 #define GPIOG           ((GPIO_TypeDef*)GPIOG_BASE)
-
-#define USART1_BASE     (APB2PERIPH_BASE + 0x3800)
-#define USART1          ((USART_TypeDef*)USART1_BASE)
-
-#define FLASH_R_BASE    (AHBPERIPH_BASE + 0x2000) //Flash registers base address
-#define FLASH           ((FLASH_TypeDef *) FLASH_R_BASE)
 
 //**********CNF**********
 typedef enum{   //Speed, input/Output
@@ -160,36 +144,6 @@ typedef struct{
   GPIOSpeed_TypeDef GPIO_Speed;
   GPIOMode_TypeDef GPIO_Mode;
 }GPIO_InitTypeDef;
-
-typedef struct{
-  uint32_t USART_BaudRate;
-  uint16_t USART_WordLength;
-  uint16_t USART_StopBits;
-  uint16_t USART_Parity;
-  uint16_t USART_Mode;
-  uint16_t USART_HardwareFlowControl;
-}USART_InitTypeDef;
- 
-typedef struct
-{
-  _IO uint32_t ACR;
-  _IO uint32_t KEYR;
-  _IO uint32_t OPTKEYR;
-  _IO uint32_t SR;
-  _IO uint32_t CR;
-  _IO uint32_t AR;
-  _IO uint32_t RESERVED;
-  _IO uint32_t OBR;
-  _IO uint32_t WRPR;
-#ifdef STM32F10X_XL
-  uint32_t RESERVED1[8]; 
-  _IO uint32_t KEYR2;
-  uint32_t RESERVED2;   
-  _IO uint32_t SR2;
-  _IO uint32_t CR2;
-  _IO uint32_t AR2; 
-#endif /* STM32F10X_XL */  
-} FLASH_TypeDef;
 
 typedef enum{
   Bit_RESET = 0,

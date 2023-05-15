@@ -5,6 +5,9 @@
 #define SYSTEM_CONFIG_H
 #include "platform_config.h"
 
+#define FLASH_R_BASE    (AHBPERIPH_BASE + 0x2000) //Flash registers base address
+#define FLASH           ((FLASH_TypeDef *) FLASH_R_BASE)
+
 #define RCC_CR_HSEON    ((uint32_t)0x00010000)  //External High Speed Clock enable
 #define RCC_CR_HSERDY   ((uint32_t)0x00020000)  //External High SPeed Clock ready flag
 #define HSEstartUp_TimeOut      ((uint16_t)0x0500)
@@ -39,16 +42,29 @@
 //internal cristal Hz
 #define HSI_Value               ((uint32_t)8000000)
 
-/* HCLK_Frequency */
-#define CFGR_HPRE_Set_Mask      ((uint32_t)0x000000F0)
-#ifdef __cplusplus
-#define  __I     volatile
-#else
-#define  __I     volatile const
-#endif  //CFGR_HPRE_Set_Mask
-
 static __I uint8_t APBAHBPrescTable[16] = {0,0,0,0,1,2,3,4,1,2,3,4,6,7,8,9};
 static __I uint8_t ADCPrescTable[4] = {2,4,6,8};
+
+typedef struct
+{
+  _IO uint32_t ACR;
+  _IO uint32_t KEYR;
+  _IO uint32_t OPTKEYR;
+  _IO uint32_t SR;
+  _IO uint32_t CR;
+  _IO uint32_t AR;
+  _IO uint32_t RESERVED;
+  _IO uint32_t OBR;
+  _IO uint32_t WRPR;
+#ifdef STM32F10X_XL
+  uint32_t RESERVED1[8]; 
+  _IO uint32_t KEYR2;
+  uint32_t RESERVED2;   
+  _IO uint32_t SR2;
+  _IO uint32_t CR2;
+  _IO uint32_t AR2; 
+#endif /* STM32F10X_XL */  
+} FLASH_TypeDef;
 
 /*----------RCC_ClocksTypeDef-----------*/
 //prescaler
