@@ -17,3 +17,11 @@ https://user-images.githubusercontent.com/94602114/236627149-396ec779-8545-4a6a-
   
 ### 2. system_information  
 ![image](https://user-images.githubusercontent.com/94602114/236626585-1837623a-fbf1-4be7-8698-383501fab2b1.png)
+
+## 2023-05-09  
+### 3. Accurate 10 second implementation  
+![image](https://github.com/sinyeopgo/stm32_practice/assets/94602114/ca7c1615-6ae9-4a46-a1d2-ed4d44d88407)
+
+##2023-05-12
+### 4. external interrupt  
+![image](https://github.com/sinyeopgo/stm32_practice/assets/94602114/56657160-43fc-43bb-965a-5d2f27dac3f7)
